@@ -60,7 +60,7 @@ Ok, this is the entire point. I learned a lot from Core Electronics' [Using Neop
 
 I don't know how to solder, and I found out that you can simply use a breadboard to connect to the Neopixel pins! 😱
 
-![Neopixels on Breadboard](images/posts/breadboard-yay.jpg)
+![Neopixels on Breadboard](images/posts/breadboard-yay.JPG)
 *Yay! I'll eventually solder these but what a great idea.*
 
 There are also some wire color conventions you can follow to build a good habit.
@@ -86,7 +86,7 @@ Now, we should note that this setup has a couple of caveats:
 
 Since we're going to be flashing our code directly through USB, this will let us see something light up right away. Here's a photo of this setup:
 
-![Finally Connected](images/posts/setup.jpg)
+![Finally Connected](images/posts/setup.JPG)
 *It took a lot of googling and asking for me. Hope you got to this faster.*
 
 ## Step 4: The code!
