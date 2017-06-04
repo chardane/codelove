@@ -51,3 +51,11 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+img + em {
+  text-align: center;
+  display: block;
+  font-size: 15px;
+  color: gray;
+  margin-top: 5px;
+}
