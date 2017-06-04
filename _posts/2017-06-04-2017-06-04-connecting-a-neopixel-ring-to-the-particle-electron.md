@@ -7,7 +7,8 @@ I've always wanted to play around with circuits, and this year's [Twilio Hackpac
 
 So, I got a Particle Electron - it's a microcontroller with a built-in 3G module *and* its own data plan. [Check it out](https://www.particle.io/products/hardware/electron-cellular-dev-kit), it's pretty awesome.
 
-{% twitter https://twitter.com/chardane/status/870009536219721728 %}
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hello, inner inventor.<br>Goodbye, sleep. <a href="https://twitter.com/particle">@particle</a> <a href="https://t.co/VarTuqPsqM">pic.twitter.com/VarTuqPsqM</a></p>&mdash; charlyn gonda (@chardane) <a href="https://twitter.com/chardane/status/870009536219721728">May 31, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 And then I wanted to play around with something fun, so I got a [Neopixel Ring with 16 pixels](https://www.adafruit.com/product/1463). There's a [Neopixel library](https://github.com/technobly/Particle-NeoPixel) that you can directly use with Particle's boards, so I figured this would be *easy-peasy*.
 

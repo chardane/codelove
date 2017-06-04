@@ -13,4 +13,3 @@ gem 'guard'
 gem 'guard-jekyll-plus'
 gem 'guard-livereload'
 gem 'jekyll-compose', group: [:jekyll_plugins]
-gem 'jekyll-twitter-plugin'
