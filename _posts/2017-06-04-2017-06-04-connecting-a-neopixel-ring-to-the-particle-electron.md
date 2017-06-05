@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Connecting a Neopixel Ring to the Particle Electron
+date:   2017-06-04 21:16:14 -0700
+comments: true
 ---
 
 I've always wanted to play around with circuits, and this year's [Twilio Hackpack](https://hackpack.cc/) got me thinking that maybe I should really get on it. Thanks for showing it to me, [@cassidoo](http://cassidoo.co/)! ❤️
@@ -18,7 +20,16 @@ After setting up the electron, I found that there was no straightforward guide o
 
 # *If you mostly know software, don't know how to solder things and like pretty lights, you've come to the right place.*
 
-I'll show you some tips on how to setup your brand new Electron and how to hook it up to your Neopixel Ring so you can run a simple light animation. This guide assumes you are familiar with the command line.
+I'll show you some tips on how to setup your brand new Electron and how to hook it up to your Neopixel Ring so you can run a simple light animation. This guide assumes you are familiar with the command line, and is mostly targeted towards Mac OS X users.
+
+This is what we'll make!
+<p>
+<img src="images/posts/neopixel-electron/pretty-lights.gif" alt="Pretty Lights" style="margin: 0 auto; display: block;">
+<em>So pretty.</em>
+</p>
+
+
+
 
 ## What you'll need
 1. Particle Electron (the kit with the antenna and battery)
@@ -91,10 +102,31 @@ Since we're going to be flashing our code directly through USB, this will let us
 
 ## Step 4: The code!
 
-Now we're back in familiar territory. Since you've already installed Particle CLI from Step 2, we can either use Particle Dev (their Desktop IDE) or just go to the [Build Web IDE](https://build.particle.io/build/new) and copy pasta this code that lights up the first (0th) pixel on the ring. It also sets the brightness pretty low, so that we don't explode. (Just kidding, we won't explode. Hopefully.)
+Now we're back in familiar territory. Make sure you've already installed Particle CLI from Step 2.
 
+We can either use [Particle Dev](https://www.particle.io/products/development-tools/particle-desktop-ide) (their Desktop IDE) or just go to the [Build Web IDE](https://build.particle.io/build/new). We'll go through the steps for the Build Web IDE for this tut.
+
+### Build (Web IDE)
+Go to the [Build Web IDE](https://build.particle.io/build/new) to create a new application. I mentioned earlier that there's a Neopixel library that was ported over, so let's add that into the project.
+
+Name your new application, and click the "Save" button. You have to save to add a library. Here we're naming it "SimpleAnimation"
+
+| ![Step 1](images/posts/neopixel-electron/step1.png) | ![Step 1](images/posts/neopixel-electron/step1half.png) |
+| *Before Save* | *After Save* |
+
+Find the "Libraries" icon and click it. Search for `neopixel` in the search box. Click the "Neopixel" library, click "Include in Project" choose "SimpleAnimation" app, and click "Confirm". *Phew.*
+
+Notice that it added this line on top:
+```cpp
+// This #include statement was automatically added by the Particle IDE.
+#include <neopixel.h>
 ```
-#include "neopixel/neopixel.h"
+
+Copy pasta this code that lights up the first (0th) pixel on the ring. It also sets the brightness pretty low, so that we don't explode. (Just kidding, we won't explode. Hopefully.)
+
+```cpp
+// This #include statement was automatically added by the Particle IDE.
+#include <neopixel.h>
 
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_COUNT 16
@@ -105,6 +137,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
 
 void setup() {
   strip.begin();
+  strip.setBrightness(brightness);
   strip.show();
 }
 
@@ -115,3 +148,78 @@ void loop() {
   delay(500);
 }
 ```
+
+Click the "Save" button again. Then, click the "Verify" button to compile the app. If everything went well, we should see the phrase "Code verified! Great work." at the bottom.
+
+Now, click the "Code" button, and click the icon next to your app name to "Compile and download firmware binary".
+
+Your downloads folder should contain a file called `firmware.bin`. With your Electron + Neopixel connected via USB, go to your downloads folder in your terminal and run:
+
+```
+$ particle flash --serial firmware.bin
+```
+Press and hold the `MODE` button on your Electron until it blinks blue, and hit Enter to flash.
+
+If everything went well, you should see ONE PIXEL LIGHT UP! WOO! 🎉
+
+## Step 5: Let's get some lights moving!
+
+Now that you know how to turn one light on, the last step is to do our simple animation! Replace your code with this:
+
+```cpp
+// This #include statement was automatically added by the Particle IDE.
+#include <neopixel.h>
+
+// IMPORTANT: Set pixel COUNT, PIN and TYPE
+#define PIXEL_COUNT 16
+#define PIXEL_PIN D6
+#define PIXEL_TYPE WS2812
+
+#define PEACH 200,50,5
+#define CYAN 10,150,70
+#define PURPLE 180,3,180
+#define BLUE 5,5,190
+#define WHITE 150,150,150
+#define GREEN 10,180,10
+
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
+
+int waitTime = 25;
+int i;
+void spin(int R, int G, int B);
+
+void setup() {
+  strip.begin();
+  strip.setBrightness(70);
+  strip.show();
+}
+
+void loop() {
+  // spin forever rotating through colors!
+  spin (PEACH);
+  spin (CYAN);
+  spin (PURPLE);
+  spin (BLUE);
+  spin (WHITE);
+  spin (GREEN);
+}
+
+void spin(int R, int G, int B) {
+    for(i=0; i < PIXEL_COUNT; i++) {
+        strip.setPixelColor(i, R,G,B);
+        strip.show();
+        delay(waitTime);
+    }
+}
+```
+
+And then download the firmware and flash your Electron like you did above. That's it! You've just animated your Neopixel! Remember, this setup only workds for prototyping, and if you want to turn the brightness all the way up you should probably research how to do that properly. If I get there soon I'll write up another guide about it.
+
+## What next?
+
+Well, there's a whole lot to learn! Here's a few links for you to read up on:
+
+1. [Using Neopixels With Particle from Core Electronics](https://core-electronics.com.au/tutorials/using-neopixels-with-particle.html). They seem to have plenty of guides around the Electron/Photon.  
+2. [Neopixels Überguide](https://learn.adafruit.com/adafruit-neopixel-uberguide/overview) - Everything you need to know about Neopixels!
+
+Thanks, I hope that helped! And leave a comment below if you have any questions. 👌🏼
