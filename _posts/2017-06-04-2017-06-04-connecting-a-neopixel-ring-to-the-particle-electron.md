@@ -219,7 +219,12 @@ void spin(int R, int G, int B) {
 }
 ```
 
-And then download the firmware and flash your Electron like you did above. That's it! You've just animated your Neopixel! Remember, this setup only workds for prototyping, and if you want to turn the brightness all the way up you should probably research how to do that properly. If I get there soon I'll write up another guide about it.
+And then download the firmware and flash your Electron like you did above. That's it! You've just animated your Neopixels!
+
+![too much fun](images/posts/too-much-fun.jpg)
+*Too much fun.*
+
+Remember, this setup only works for prototyping, and if you want to turn the brightness all the way up you should probably research how to do that properly. If I get there soon I'll write up another guide about it.
 
 ## What next?
 
