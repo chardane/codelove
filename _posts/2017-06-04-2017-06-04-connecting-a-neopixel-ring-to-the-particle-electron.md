@@ -12,7 +12,7 @@ So, I got a Particle Electron - it's a microcontroller with a built-in 3G module
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hello, inner inventor.<br>Goodbye, sleep. <a href="https://twitter.com/particle">@particle</a> <a href="https://t.co/VarTuqPsqM">pic.twitter.com/VarTuqPsqM</a></p>&mdash; charlyn gonda (@chardane) <a href="https://twitter.com/chardane/status/870009536219721728">May 31, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-And then I wanted to play around with something fun, so I got a [Neopixel Ring with 16 pixels](https://www.adafruit.com/product/1463). There's a [Neopixel library](https://github.com/technobly/Particle-NeoPixel) that you can directly use with Particle's boards, so I figured this would be *easy-peasy*.
+And then I wanted to play around with something fun, so I got a [Neopixel Ring with 16 pixels](https://www.adafruit.com/product/1463). There's a [Neopixel library](https://github.com/technobly/Particle-NeoPixel) that you can directly use with Particle's boards, so I figured this would be *easy-peasy*. (Spoiler alert: it's wasn't super easy, but I learned a lot! Maybe this guide will make it easier for someone else.)
 
 I should mention that I know next to nothing about circuits or hardware in general. My greatest hardware achievement was when I once made light bulbs light up in *parallel circuits*. Exciting.
 
@@ -29,15 +29,13 @@ This is what we'll make!
 </p>
 
 
-
-
 ## What you'll need
-1. Particle Electron (the kit with the antenna and battery)
-2. Two half breadboards (the Electron comes with one)
-3. Jumper wires, minimum of 4. I think it's good to have plenty of these around.
-4. Neopixel Ring, 16 pixels.
+1. [Particle Electron](https://store.particle.io/collections/electron) (the kit with the antenna and battery)
+2. [Two half breadboards](https://www.amazon.com/gp/product/B004RXKWDQ/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B004RXKWDQ&linkCode=as2&tag=chardane-20&linkId=5caaca2c4037943140f6fe937f02f964) (the Electron comes with one, but you need another one.)
+3. [Jumper wires](https://www.amazon.com/gp/product/B01EV70C78/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B01EV70C78&linkCode=as2&tag=chardane-20&linkId=9bc81e4b9270d9f96e11971822a915f9), minimum of 4. I think it's good to have plenty of these around.
+4. [Adafruit Neopixel Ring](https://www.adafruit.com/product/1463), 16 pixels.
 
-I got the Particle Maker Kit which contained the other half-breadboard and the jumper wires (wires with both male tips). These are the twist-tied bunch of wires, *not* the colorful wires stuck together that you have to pull apart (those have one male tip and one female tip. idk what they're called.).
+I got the [Particle Maker Kit](https://store.particle.io/products/particle-maker-kit) which contained the other half-breadboard and the jumper wires (wires with both male tips). These are the twist-tied bunch of wires, *not* the colorful wires stuck together that you have to pull apart (those have one male tip and one female tip. idk what they're called.).
 
 ## Step 1: Go to particle.io/start
 
@@ -48,15 +46,22 @@ Select the big Electron image. You'll get to this page, but you'll actually want
 
 In the "Introduction" page, look for the ["SETUP MY ELECTRON"](https://setup.particle.io/) link and follow the steps. Or you can just click that link. It requires a credit card, so get that ready too.
 
+At some point they'll tell you to insert the SIM card to the Electron. You'll have to pull the Electron out of the breadboard to insert the SIM.
+
+![Pull out the Electron](images/posts/electron-sim.png)
+*It may be hard to remove, but you can do it.*
+
+You'll also need to connect the antenna.
+
 ![Antenna](images/posts/its-gonna-be-ok-antenna.png)
 
-You'll also need to connect the antenna. I was a little scared of forcefully pushing in this delicate looking piece of metal, but it'll be fine. *I wish someone told me this.*
+ I was a little scared of forcefully pushing in this delicate looking piece of metal, but it'll be fine. *I wish someone told me these things.*
 
 You can continue with the rest of their guides, it's actually really helpful to get a better feel of things (like what the pins do and how to blink an LED). Come back when you're ready to connect your Neopixel to the Electron.
 
 ## Step 2: Install Particle CLI
 
-You'll need this to be able to flash your code directly to your device through USB. Because you have to pay for that data, you'll want to flash directly so you don't waste it. You can follow Particle's guide, or just run these two commands for now.
+You'll need this to be able to flash your code directly to your device through USB. Because you have to pay for that data, you'll want to flash directly so you don't waste it. You can follow [Particle's guide](https://docs.particle.io/guide/tools-and-features/cli/electron/), or just run these two commands for now.
 
 Make sure to install `npm` if you haven't yet.
 ```
