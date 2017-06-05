@@ -49,7 +49,7 @@ In the "Introduction" page, look for the ["SETUP MY ELECTRON"](https://setup.par
 At some point they'll tell you to insert the SIM card to the Electron. You'll have to pull the Electron out of the breadboard to insert the SIM.
 
 ![Pull out the Electron](images/posts/electron-sim.png)
-*It may be hard to remove, but you can do it.*
+*Just pretend you're Arthur and this is a sword stuck in a rock.*
 
 You'll also need to connect the antenna.
 
