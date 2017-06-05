@@ -3,6 +3,7 @@ layout: post
 title: Connecting a Neopixel Ring to the Particle Electron
 date:   2017-06-04 21:16:14 -0700
 comments: true
+image: http://chardane.github.io/codelove/images/posts/too-much-fun.jpg
 ---
 
 I've always wanted to play around with circuits, and this year's [Twilio Hackpack](https://hackpack.cc/) got me thinking that maybe I should really get on it. Thanks for showing it to me, [@cassidoo](http://cassidoo.co/)! ❤️

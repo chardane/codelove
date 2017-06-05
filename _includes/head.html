@@ -10,4 +10,10 @@
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.github.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.github.url | prepend: site.url }}">
   <script src="http://localhost:35729/livereload.js"></script>
+
+  {% if page.image %}
+   <meta property="og:image" content="{{page.image}}" />
+   <meta name="twitter:image" content="{{page.image}}" />
+ {% endif %}
+
 </head>
